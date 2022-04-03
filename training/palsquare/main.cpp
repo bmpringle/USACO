@@ -124,8 +124,6 @@ class AltBaseInt {
             AltBaseInt one = AltBaseInt(1, base);
 
             data = operator+(one).getData();
-
-            //std::cout << "added " << getData() << " to " << 1 << " in base " << base << " to get " << data << std::endl;
         }
 
         AltBaseInt operator*(AltBaseInt rhs) {
@@ -136,8 +134,6 @@ class AltBaseInt {
             AltBaseInt lhs = *this;
             lhs.toBase(10);
             rhs.toBase(10);
-
-            //std::cout << "multiplying " << lhs.getData() << " by " << rhs.getData() << std::endl;
 
             AltBaseInt result = AltBaseInt(std::to_string(std::stoi(lhs.getData()) * std::stoi(rhs.getData())), 10);
             result.toBase(base);
@@ -182,8 +178,6 @@ class AltBaseInt {
                 product.erase(product.begin());
             }
 
-            std::cout << "added " << getData() << " to " << i1.getData() << " in base " << base << " to get " << getString(product) << std::endl;
-
             return AltBaseInt(getString(product), base);
         }
     
@@ -205,8 +199,6 @@ class AltBaseInt {
 
 
         void toBase(int newBase) {
-            //std::cout << "converting " << getData() << " to base " << std::to_string(newBase);
-
             std::vector<int> digits = getDigits(getData());
 
             int b10Value = 0;
@@ -261,17 +253,13 @@ class AltBaseInt {
             base = newBase;
 
             data = getString(digits);
-
-            //std::cout << " = " << getData() << std::endl;
         }
 
         bool isSquarePalindromic() {
-            //std::cout << "is " << data << "'s square a palindrome" << std::endl;
             AltBaseInt square = *this * *this;
             std::string squareData = square.getData();
 
             for(int i = 0; i < squareData.size() - i; ++i) {
-                //std::cout << "comp " << i << " to " << squareData.size() - i << " w/ size " << squareData.size() << std::endl;
                 if(squareData[i] != squareData[squareData.size() - i - 1]) {
                     return false;
                 }
